@@ -1,0 +1,43 @@
+{
+    "variables": {
+      "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+      "region": "us-east-1"
+    },
+    "builders": [
+      {
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "type": "amazon-ebs",
+        "ami_name": "packer-linux-aws-demo-{{timestamp}}",
+        "instance_type": "t2.micro",
+        "region": "{{user `region`}}",
+        "source_ami_filter": {
+          "filters": {
+            "virtualization-type": "hvm",
+            "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+            "root-device-type": "ebs"
+          },
+          "owners": ["099720109477"],
+          "most_recent": true
+        },
+        "ssh_username": "ubuntu"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "file",
+        "source": "./ubuntu_file.txt",
+        "destination": "/home/ubuntu/"
+      },
+      {
+        "type": "shell",
+        "inline": ["ls -al /home/ubuntu", "cat /home/ubuntu/ubuntu_file.txt"]
+      },
+      {
+        "type": "shell",
+        "script": "./ubuntu_script.sh"
+      }
+    ]
+  }
+  
