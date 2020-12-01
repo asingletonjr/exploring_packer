@@ -16,7 +16,7 @@
     - `packer validate ubuntu_script.json` then `packer build ubuntu_script.json`
 
 ### Implementation (Create Instance)
-- [] AWS Cli: aws ec2 run-instances --image-id <ami_output_id> --count 1 --instance-type <instance_type> --key-name <desired_keypair> --security-group-ids <security_group)id>--subnet-id <subnet_id>
+- [] AWS Cli: `aws ec2 run-instances --image-id <ami_output_id> --count 1 --instance-type <instance_type> --key-name <desired_keypair> --security-group-ids <security_group)id>--subnet-id <subnet_id>`
 - [] AWS Console: launch instance using packer ami-id output
 </br>
 ![Console](ec2_launch_screen.png)
