@@ -18,8 +18,8 @@
 ### Implementation (Create Instance)
 - [] AWS Cli: `aws ec2 run-instances --image-id <ami_output_id> --count 1 --instance-type <instance_type> --key-name <desired_keypair> --security-group-ids <security_group)id>--subnet-id <subnet_id>`
 - [] AWS Console: launch instance using packer ami-id output
-</br>
-![Console](ec2_launch_screen.png)
+
+![Console](.img/ec2_launch_screen.jpeg)
 
 ### Documentation
 - [Packer Tutorial](https://learn.hashicorp.com/tutorials/packer/getting-started-build-image)
